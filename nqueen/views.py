@@ -1,22 +1,32 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
-from django.template.defaulttags import register
 
-#importing algorithm
+# importing algorithm
 from genetics.algorithm import main
 
-@register.filter
-def get_range(value):
-    return range(value)
 
 def index(request):
-    # creating dummy array
-    retVal = main(9,4)
+
+    return render(request, 'inputForm.html')
+
+
+def solution(request):
+    n = int(request.POST.get('n'))
+    p = int(request.POST.get('p'))
+
+    retVal = main(n, p)
 
     context = {
-        'arr':retVal['solved_2d_array']
-    }
+         'arr':retVal['solved_2d_array']
+     }
     return render(request,'index.html', context)
 
+# def index(request):
+#     # creating dummy array
+#     retVal = main(9,4)
 
+#     context = {
+#         'arr':retVal['solved_2d_array']
+#     }
+#     return render(request,'index.html', context)

@@ -1,0 +1,120 @@
+<html>
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'inputForm\style.css' %}" \>
+    <!-- <link href="\static\bootstrap\css\bootstrap.min.css" rel="stylesheet" /> -->
+
+    <style>
+        body{
+            overflow-y : hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="wrappper">
+        <div class="col-12">
+            <div id="svg_wrap"></div>
+
+            <h1>Online Application</h1>
+            <section>
+                <h1>Number of Queens</h1>
+                <input type="number" placeholder="N" style="height: 40vh; font-size: 30vh; text-align: center;"
+                    id="nofnqueen">
+                <!-- <input type="text" placeholder="Firstname" />
+                <input type="text" placeholder="Surname" />
+                <input type="text" placeholder="Birthdate" />
+                <input type="text" placeholder="Insurance number" />
+                <input type="text" placeholder="Family status" /> -->
+            </section>
+
+            <section>
+                <!-- <p>Address</p> -->
+                <h1>Population Size</h1>
+                <input type="number" placeholder="P" style="height: 40vh; font-size: 30vh; text-align: center;"
+                    id="pofnqueen">
+                <!-- <input type="text" placeholder="Street, nbr" />
+                <input type="text" placeholder="City" />
+                <input type="text" placeholder="Postcode" />
+                <input type="text" placeholder="Country" /> -->
+            </section>
+            <!-- 
+            <section>
+                <p>Contact information</p>
+                <input type="text" placeholder="Email address" />
+                <input type="text" placeholder="Phone" />
+                <input type="text" placeholder="Mobile" />
+            </section>
+
+            <section>
+                <p>Application</p>
+                <input type="text" placeholder="Preferred entrance date" />
+                <input type="text" placeholder="Number of people" />
+            </section> -->
+
+            <!-- <section>
+                <p>General condtitions</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.</p>
+            </section> -->
+
+            <div class="button" id="prev">&larr; Previous</div>
+            <div class="button" id="next">Next &rarr;</div>
+            <div class="button" id="submit" onclick="submitForm()">Solve!</div>
+
+
+            <!-- /dummy form  -->
+            <div style="display:none">
+                <form method="post" action="solve" id="npform">
+                    {% csrf_token %}
+                    <input type="number" name="n" id="formn">
+                    <input type="number" name="p" id="formp">
+                </form>
+            </div>
+
+            <!-- /.MultiStep Form -->
+        </div>
+    </div>
+
+    <script src="{% static 'jquery\jquery.min.js' %}"></script>
+    <script src="{% static 'jquery\jquery-ui.min.js' %}"></script>
+    <script src="{% static 'inputForm\script.js' %}"></script>
+    <script>
+        submitForm = function () {
+
+            //to be commented
+            let n = $('#nofnqueen').val();
+            let p = $('#pofnqueen').val();
+            //
+
+            $('#formn').val($('#nofnqueen').val());
+            $('#formp').val($('#pofnqueen').val());
+            $('#npform').submit();
+            // alert(n);
+            // alert(p);
+
+            // $.ajax({
+            //     url: "/nqueen/send",
+            //     data: {
+            //         n: n,
+            //         p: p
+            //     },
+            //     success: function (result) {
+            //         alert(n);
+            //         alert(p);
+            //         $("#div1").html(result);
+            //     }
+            // });
+        }
+    </script>
+</body>
+
+</html>
