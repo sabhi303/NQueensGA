@@ -8,11 +8,15 @@ from genetics.algorithm import main
 
 def index(request):
 
-    retVal = main(12,20)
+    retVal = main(6,20)
 
     context = {
-        'arr':retVal['solved_2d_array']
+        'arr':retVal['solved_2d_array'],
+        'numberQuenns': retVal['numberQueen'],
+        'PopulationSize': retVal['populationSize'],
+        'Generation': retVal['generation'],
     }
+    print(context)
     return render(request,'indextemp.html', context)
 
 

@@ -214,6 +214,8 @@ def main(n, populationSize):
         'solvedQueens' : solvedQueens,
         'solved_2d_array' : solved_2d_array,
         'generation' : generation,
+        'numberQueen': n,
+        'populationSize' : populationSize
     }
     print(solved_2d_array)
     # print(context)

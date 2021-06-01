@@ -201,7 +201,7 @@
         }
 
         .card {
-            height: 8vh;
+            min-height: 8vh;
             width: 10vw;
             box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
             border-radius: 5px;
@@ -273,9 +273,21 @@
         }
 
         .chessboard td {
+            {% if arr|length > 8 %}
             height: 6vh;
             width: 6vh;
-            font-size: 150%;
+            {% elif  arr|length > 7 %}
+            height: 8vh;
+            width: 8vh;
+            {% elif  arr|length > 4 %}
+            height: 10vh;
+            width: 10vh;
+            {% else %}
+            height: 14vh;
+            width: 14vh;
+            {% endif %}
+
+            font-size: 250%;
             text-align: center;
             justify-content: center;
         }
@@ -356,25 +368,25 @@
 
                 <div class="outer-card">
                     <div class="card">
-                        <p>TIMER</p>
-                        <h3 id="time"></h3>
+                        <!-- <p>Parent</p> -->
+                        <h3 id="time">Button</h3>
                     </div>
                     <div class="card">
-                        <p>WALLET</p>
-                        <h3 id="wallet"></h3>
+                        <p>Queens</p>
+                        <h3 id="wallet">{{ numberQuenns  }}</h3>
                     </div>
                     <div class="card">
-                        <p>CURRENT BET</p>
-                        <h3 id="currbet">Rs. 20</h3>
+                        <p>Population</p>
+                        <h3 id="currbet">{{ PopulationSize  }}</h3>
                     </div>
                     <div class="card">
-                        <p>MULTIPLIER</p>
-                        <h3 id="currmulti">2x</h3>
+                        <p>Generation</p>
+                        <h3 id="currmulti">{{ Generation  }}</h3>
                     </div>
 
                     <div class="card">
-                        <p>current </p>
-                        <h3 id="currentque">1</h3>
+                        <!-- <p>Reload </p> -->
+                        <h3 id="currentque">Refresh</h3>
                     </div>
                 </div>
                 <!-- <div id="controlsbet">
