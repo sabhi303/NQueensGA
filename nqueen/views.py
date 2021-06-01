@@ -8,7 +8,7 @@ from genetics.algorithm import main
 
 def index(request):
 
-    retVal = main(10,20)
+    retVal = main(12,20)
 
     context = {
         'arr':retVal['solved_2d_array']
