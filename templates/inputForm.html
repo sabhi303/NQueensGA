@@ -1,12 +1,13 @@
 <html>
 {% load static %}
+
 <head>
     <link rel="stylesheet" href="{% static 'inputForm\style.css' %}" \>
     <!-- <link href="\static\bootstrap\css\bootstrap.min.css" rel="stylesheet" /> -->
 
     <style>
-        body{
-            overflow-y : hidden;
+        body {
+            overflow-y: hidden;
         }
     </style>
 </head>
@@ -94,25 +95,18 @@
             let n = $('#nofnqueen').val();
             let p = $('#pofnqueen').val();
             //
+            if (p < 2) {
+                alert("Please enter Intial Population Size >2 !");
+                return;
+            }
+            if (n > 10) {
+                alert("Please enter N <10!");
+                return;
+            }
 
             $('#formn').val($('#nofnqueen').val());
             $('#formp').val($('#pofnqueen').val());
             $('#npform').submit();
-            // alert(n);
-            // alert(p);
-
-            // $.ajax({
-            //     url: "/nqueen/send",
-            //     data: {
-            //         n: n,
-            //         p: p
-            //     },
-            //     success: function (result) {
-            //         alert(n);
-            //         alert(p);
-            //         $("#div1").html(result);
-            //     }
-            // });
         }
     </script>
 </body>

@@ -8,7 +8,12 @@ from genetics.algorithm import main
 
 def index(request):
 
-    return render(request, 'inputForm.html')
+    retVal = main(10,20)
+
+    context = {
+        'arr':retVal['solved_2d_array']
+    }
+    return render(request,'indextemp.html', context)
 
 
 def solution(request):
