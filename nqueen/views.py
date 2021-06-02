@@ -16,7 +16,7 @@ numberQueens = 0
 populationSize = 0
 
 
-def solution(request):
+def index(request):
     return render(request, 'inputForm.html')
 
 # def index(request):
@@ -34,8 +34,10 @@ def solution(request):
 #     return render(request,'index.html', context)
 
 
-def index(request):
-    retVal = main(8, 4)
+def solution(request):
+    n = int(request.GET.get('n'))
+    p = int(request.GET.get('p'))
+    retVal = main(n,p)
 
     global generationTrack, numberQueens, populationSize, totalGenerations
     generationTrack = retVal['generationTrack']
