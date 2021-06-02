@@ -217,7 +217,6 @@ def main(n, populationSize):
 
     for ielem in range(n):
         solved_2d_array[ielem][solvedQueens[ielem] - 1] = 1
-        # arr1[ielem] [(generationTrack[currentGeneration-1])[ielem] - 1] = 1
         
     
     global generationTrack

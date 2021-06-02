@@ -407,7 +407,7 @@
 
 
                 <div class="outer-card">
-                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;">
+                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;" onclick="showParents()">
                     <div class="card">
                         <p>Show <br>Parent <br>Generation</p>
                         <!-- <h3 id="time">Button</h3> -->
@@ -423,9 +423,9 @@
                     </div>
                     <div class="card">
                         <p>Generation</p>
-                        <h3 id="currmulti">{{ Generation  }}</h3>
+                        <h3 id="currmulti">{{ currentGeneration  }}</h3>
                     </div>
-                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;" onclick="window.location.reload()">
+                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;"  onclick="showChild()">
                     <div class="card">
                         <p>Show<br> Child<br> Generation </p>
                         <!-- <h3 id="currentque">Refresh</h3> -->
@@ -445,7 +445,20 @@
 
     </div>
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <form action="showParents" style="display: none;" id="showParentsForm"></form>
+    <form action="showChild" style="display: none;" id="showChildForm"></form>
+
+    <script type="text/javascript" src="{% static 'jquery\jquery.min.js' %}"></script>
+    <script>
+        function showParents(){
+            $('#showParentsForm').submit();
+            return;
+        }
+        function showChild(){
+            $('#showChildForm').submit();
+            return;
+        }
+    </script>
 
 </body>
 

@@ -11,12 +11,13 @@ import numpy
 
 generationTrack = []
 totalGenerations = 0
-generationCounter = 1
+generationCounter = 0
 numberQueens = 0
 populationSize = 0
 
+
 def solution(request):
-    return render(request,'inputForm.html')
+    return render(request, 'inputForm.html')
 
 # def index(request):
 #     # n = int(request.GET.get('n'))
@@ -34,71 +35,88 @@ def solution(request):
 
 
 def index(request):
-    retVal = main(8,4)
+    retVal = main(8, 4)
 
-    global generationTrack, numberQueens, populationSize,totalGenerations
+    global generationTrack, numberQueens, populationSize, totalGenerations
     generationTrack = retVal['generationTrack']
     numberQueens = retVal['numberQueen']
     populationSize = retVal['populationSize']
-    totalGenerations = retVal['generation'] 
+    totalGenerations = retVal['generation']
 
-    
     context = {
-        'arr':retVal['solved_2d_array'],
+        'arr': retVal['solved_2d_array'],
         'numberQuenns': retVal['numberQueen'],
         'PopulationSize': retVal['populationSize'],
         'Generation': retVal['generation'],
     }
     # print(context)
-    temp = showParent(request)
-    return temp
+    return render(request, 'index.html', context)
+
 
 def showParent(request):
     global generationTrack
     global generationCounter, numberQueens, populationSize, totalGenerations
-    
+
+    generationCounter = generationCounter + 1
     currentGeneration = totalGenerations - generationCounter
-    generationCounter = generationCounter + 1 
-    
-    arr1 = numpy.zeros((numberQueens,numberQueens))
-    solvedQueens = generationTrack[currentGeneration-1][0] 
+
+    arr1 = numpy.zeros((numberQueens, numberQueens))
+    solvedQueens = generationTrack[currentGeneration-1][0]
     for ielem in range(numberQueens):
         arr1[ielem][solvedQueens[ielem] - 1] = 1
-    
-    arr2 = numpy.zeros((numberQueens,numberQueens))
-    solvedQueens = generationTrack[currentGeneration-1][1] 
+
+    arr2 = numpy.zeros((numberQueens, numberQueens))
+    solvedQueens = generationTrack[currentGeneration-1][1]
     for ielem in range(numberQueens):
         arr2[ielem][solvedQueens[ielem] - 1] = 1
-    
 
-    print(generationCounter, numberQueens, populationSize, totalGenerations)
-    print(generationTrack)
+    # print(generationCounter, numberQueens, populationSize, totalGenerations)
+    # print(generationTrack)
     context = {
-        'arr1':arr1,
-        'arr2':arr2,
+        'arr1': arr1,
+        'arr2': arr2,
         'numberQuenns': numberQueens,
         'PopulationSize': populationSize,
-        'Generation': totalGenerations,
+        'currentGeneration': currentGeneration,
     }
 
-    print(context)
+    # print(context)
 
     return render(request, "showParents.html", context)
 
 
+def showChild(request):
 
+    global generationTrack
+    global generationCounter, numberQueens, populationSize, totalGenerations
 
+    generationCounter = generationCounter - 1
+    currentGeneration = totalGenerations - generationCounter
 
+    arr1 = numpy.zeros((numberQueens, numberQueens))
+    solvedQueens = generationTrack[currentGeneration-1][0]
+    for ielem in range(numberQueens):
+        arr1[ielem][solvedQueens[ielem] - 1] = 1
 
+    arr2 = numpy.zeros((numberQueens, numberQueens))
+    solvedQueens = generationTrack[currentGeneration-1][1]
+    for ielem in range(numberQueens):
+        arr2[ielem][solvedQueens[ielem] - 1] = 1
 
+    print(generationCounter, numberQueens,
+            populationSize, totalGenerations)
+    print(generationTrack)
+    context = {
+        'arr1': arr1,
+        'arr2': arr2,
+        'numberQuenns': numberQueens,
+        'PopulationSize': populationSize,
+        'currentGeneration': currentGeneration,
+    }
 
+    # print(context)
 
-
-
-
-
-
-
+    return render(request, "showParents.html", context)
 
 
 # def solution(request):

@@ -367,7 +367,7 @@
 
 
                 <div class="outer-card">
-                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;">
+                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;" onclick="showParents()">
                     <div class="card">
                         <p>Show <br>Parent <br>Generation</p>
                         <!-- <h3 id="time">Button</h3> -->
@@ -405,8 +405,15 @@
 
     </div>
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <form action="showParents" style="display: none;" id="showParentsForm"></form>
 
+    <script type="text/javascript" src="{% static 'jquery\jquery.min.js' %}"></script>
+    <script>
+        function showParents(){
+            $('#showParentsForm').submit();
+            return;
+        }
+    </script>
 </body>
 
 </html>
