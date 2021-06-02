@@ -26,7 +26,7 @@ def solution(request):
 
 
 def index(request):
-    retVal = main(4,4)
+    retVal = main(8,4)
 
     context = {
         'arr':retVal['solved_2d_array'],
