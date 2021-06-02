@@ -22,8 +22,8 @@
             <h1>Online Application</h1>
             <section>
                 <h1>Number of Queens</h1>
-                <input type="number" placeholder="N" style="height: 40vh; font-size: 30vh; text-align: center;"
-                    id="nofnqueen">
+                <input type="number" placeholder="N"
+                    style="height: 40vh; font-size: 30vh; text-align: center; overflow-y: hidden;" id="nofnqueen">
                 <!-- <input type="text" placeholder="Firstname" />
                 <input type="text" placeholder="Surname" />
                 <input type="text" placeholder="Birthdate" />
@@ -34,8 +34,8 @@
             <section>
                 <!-- <p>Address</p> -->
                 <h1>Population Size</h1>
-                <input type="number" placeholder="P" style="height: 40vh; font-size: 30vh; text-align: center;"
-                    id="pofnqueen">
+                <input type="number" placeholder="P"
+                    style="height: 40vh; font-size: 30vh; text-align: center;overflow-y: hidden;" id="pofnqueen">
                 <!-- <input type="text" placeholder="Street, nbr" />
                 <input type="text" placeholder="City" />
                 <input type="text" placeholder="Postcode" />
@@ -74,8 +74,8 @@
 
             <!-- /dummy form  -->
             <div style="display:none">
-                <form method="post" action="solve" id="npform">
-                    {% csrf_token %}
+                <form method="GET" action="solve" id="npform">
+
                     <input type="number" name="n" id="formn">
                     <input type="number" name="p" id="formp">
                 </form>

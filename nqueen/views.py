@@ -5,10 +5,28 @@ from django.shortcuts import redirect, render
 # importing algorithm
 from genetics.algorithm import main
 
+# altered for the time being
+
+def solution(request):
+    return render(request,'inputForm.html')
+
+# def index(request):
+#     # n = int(request.GET.get('n'))
+#     # p = int(request.GET.get('p'))
+#     retVal = main(8,4)
+
+#     context = {
+#         'arr':retVal['solved_2d_array'],
+#         'numberQuenns': retVal['numberQueen'],
+#         'PopulationSize': retVal['populationSize'],
+#         'Generation': retVal['generation'],
+#     }
+#     # print(context)
+#     return render(request,'index.html', context)
+
 
 def index(request):
-
-    retVal = main(6,20)
+    retVal = main(4,4)
 
     context = {
         'arr':retVal['solved_2d_array'],
@@ -16,26 +34,40 @@ def index(request):
         'PopulationSize': retVal['populationSize'],
         'Generation': retVal['generation'],
     }
-    print(context)
-    return render(request,'indextemp.html', context)
+    # print(context)
+    return render(request,'index.html',context)
 
 
-def solution(request):
-    n = int(request.POST.get('n'))
-    p = int(request.POST.get('p'))
 
-    retVal = main(n, p)
 
-    context = {
-         'arr':retVal['solved_2d_array']
-     }
-    return render(request,'index.html', context)
 
-# def index(request):
-#     # creating dummy array
-#     retVal = main(9,4)
+
+
+
+
+
+
+
+
+
+
+
+# def solution(request):
+#     n = int(request.POST.get('n'))
+#     p = int(request.POST.get('p'))
+
+#     retVal = main(n, p)
 
 #     context = {
-#         'arr':retVal['solved_2d_array']
-#     }
+#          'arr':retVal['solved_2d_array']
+#      }
 #     return render(request,'index.html', context)
+
+# # def index(request):
+# #     # creating dummy array
+# #     retVal = main(9,4)
+
+# #     context = {
+# #         'arr':retVal['solved_2d_array']
+# #     }
+# #     return render(request,'index.html', context)
