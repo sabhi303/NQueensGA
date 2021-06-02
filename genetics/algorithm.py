@@ -17,6 +17,49 @@ def population(populationSz):
     random.shuffle(l1)
     return l1
 
+def mypopulation(n,populationSize):
+    inp=[]
+    total=[]
+    for i in range(n):
+        if(str(i) not in populationSize):
+            inp.append(i)
+    k=math.factorial(len(inp))
+    
+    # if(k==0):
+    #     total.append(list(map(int,populationSize)))
+    
+    if(k>20):
+        for i in range(20):
+            random.shuffle(inp)
+            k=0
+            ans=[]
+            for j in range(n):
+                if(populationSize[j]=='-1'):
+                    ans.append(inp[k]+1)
+                    k+=1
+                else:
+                    ans.append(int(populationSize[j])+1)
+            total.append(ans)
+    else:
+        for i in range(k):
+            random.shuffle(inp)
+            k=0
+            ans=[]
+            for j in range(n):
+                if(populationSize[j]=='-1'):
+                    ans.append(inp[k]+1)
+                    k+=1
+                else:
+                    ans.append(int(populationSize[j])+1)
+            total.append(ans)
+        for i in range(20-k):
+            total.append(population(n))
+    # if(k==0):
+    #     total.pop()
+    return total,20
+                
+
+
 
 def selection(total_population, percentage):
     """
@@ -195,9 +238,13 @@ def nQueen(bordSize, totalPop, maxGeneration, totalItr=0, mutationFactor=0.5):
 def main(n, populationSize):
     
     totalPopulation = []
-
-    for ielem in range(populationSize):
-        totalPopulation.append(population(n))
+    if(len(populationSize)==1):
+        populationSize=int(populationSize[0])
+        for ielem in range(populationSize):
+            totalPopulation.append(population(n))
+    else:
+        totalPopulation,populationSize=mypopulation(n,populationSize)
+    print(totalPopulation)
 
     # print("totalPopulation : ",totalPopulation)
 

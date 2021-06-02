@@ -36,8 +36,8 @@ def index(request):
 
 def solution(request):
     n = int(request.GET.get('n'))
-    p = int(request.GET.get('p'))
-    retVal = main(n,p)
+    p = request.GET.get('p')
+    retVal = main(n,p.split(','))
 
     global generationTrack, numberQueens, populationSize, totalGenerations
     generationTrack = retVal['generationTrack']
