@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <!-- <link rel='stylesheet' href='css/progressbar.css'> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <title>N Queen Problem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            /*background-image: url('../assets/q.jpg');*/
+            /* background-image: url('../media/round2.jpg'); */
+            background: url("{% static 'img\indexback.jpg' %}");
+            background-position: center;
+            background-size: cover;
+            color: whitesmoke;
+        }
+
+        textarea {
+            width: 98%;
+            height: 100%;
+            background: #363636;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 1rem 0.2rem 0 1rem;
+            font-size: 120%;
+            scroll-behavior: unset;
+            width: 98%;
+            height: 100%;
+            resize: none;
+        }
+
+        .main-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70vw;
+            height: 80vh;
+            border-radius: 10px;
+        }
+
+        .outer-border {
+            position: relative;
+            background-color: goldenrod;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 90vh;
+            width: 68vw;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.9);
+            background: transparent;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .inner-border {
+            position: absolute;
+            background-color: black;
+            /* background-color: blue; */
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 58vh;
+            width: 66vw;
+            border-radius: 10px;
+            border: none;
+            background: transparent;
+        }
+
+        .inner-border table {
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+            border: none;
+        }
+
+        .inner-border .question {
+            height: 15vh;
+            border: 1px solid whitesmoke;
+        }
+
+        .inner-border .question {
+            height: 38vh;
+            width: 98%;
+            margin: 0 !important;
+        }
+
+        .inner-border .question1 {
+            min-height: 46vh;
+            border: 1px solid whitesmoke;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner-border .option {
+            height: 12vh;
+            border-radius: 10px/50px;
+            background-color: #363636;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin: 0.1rem 0.2rem !important;
+            padding: 0 2rem !important;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .inner-border .option input[type=radio] {
+            margin-right: 1rem;
+            position: absolute;
+            top: 45%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+            transform: scale(1.5);
+        }
+
+        /* 
+        .controls {
+             position: absolute;
+            top: 100%;
+            left: 50%; 
+            margin-top: 12%;
+            transform: translate(-50%, -5%);
+            width: 80vw;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
+
+        .div2,
+        .div3,
+        .div4,
+        .div5,
+        .div6 {
+            width: 7rem;
+            height: 7rem;
+            font-size: 1rem;
+            border-radius: 100%;
+            border: none;
+            margin: 0.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0.5rem;
+        }
+
+        .div2:focus,
+        .div3:focus,
+        .div4:focus,
+        .div5:focus,
+        .div6:focus {
+            outline: none;
+        }
+
+        .div2 {
+            background: rgb(0, 0, 0);
+            background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 39%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .div3 {
+            background: rgb(0, 0, 0);
+            background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 1, 255, 1) 0%, rgba(0, 1, 255, 1) 39%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .div4 {
+            background: rgb(0, 0, 0);
+            background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 255, 0, 1) 0%, rgba(0, 255, 0, 1) 39%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .div5 {
+            background: rgb(0, 0, 0);
+            background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(249, 255, 0, 1) 0%, rgba(249, 255, 0, 1) 39%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .div6 {
+            background: rgb(0, 0, 0);
+            background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 39%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .outer-card {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card {
+            min-height: 8vh;
+            width: 10vw;
+            box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            margin: 0.5rem 2rem;
+            color: white;
+            background-color: #363636;
+            padding: 0.2rem 0.5rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: rgb(131, 131, 131);
+            text-align: center;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .card h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .side-gif {
+            width: 100%;
+            text-align: right;
+            overflow: hidden;
+        }
+
+        .side-gif img {
+            margin-right: -5%;
+        }
+
+        .money {
+            background-color: #363636;
+            color: whitesmoke;
+            border: none;
+            height: 15vh;
+            border-radius: 5px;
+            width: 100%;
+            text-align: center;
+            font-size: 150%;
+        }
+
+        .passa {
+            background-color: #363636;
+            color: whitesmoke;
+            border: none;
+            height: 5vh;
+            border-radius: 5px;
+            /*width: 100%;*/
+            text-align: center;
+            font-size: 150%;
+        }
+
+
+
+        .chessboard table {
+            border: 8px solid rgba(15, 1, 1, 0.596);
+            margin: auto;
+            font-size: 200%;
+        }
+
+        .chessboard td {
+            {% if arr|length > 8 %}
+            height: 6vh;
+            width: 6vh;
+            {% elif  arr|length > 7 %}
+            height: 8vh;
+            width: 8vh;
+            {% elif  arr|length > 4 %}
+            height: 10vh;
+            width: 10vh;
+            {% else %}
+            height: 14vh;
+            width: 14vh;
+            {% endif %}
+
+            font-size: 250%;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .odd {
+            background-color: #b5915f;
+            color: #000;
+        }
+
+        .even {
+            background-color: #441a03;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="logo">
+        <img src="./assets/logo.gif" alt="">
+    </div> -->
+    <div class="main-div">
+        <div class="outer-border">
+            <h2>Solution to N-Queen</h2>
+            <div class="inner-border">
+
+
+
+                <div id="divwooption">
+                    <div class="table" style="width: 100%;">
+                        <table style="width: 100%; padding: 0.5rem">
+                            <tr>
+                                <td colspan="2" class="question1" style="border: none;">
+                                    <div style="height: 100%; width: 100%;">
+
+                                        <!-- ithe mala maza table takayachay basically -->
+                                        <table class="chessboard" style="text-align: center; justify-content: center !important; margin-right: auto !important; margin-left: auto !important;">
+                                            {% for i in arr %}
+                                            <tr>
+                                                {% if forloop.counter|divisibleby:2 %}
+
+                                                {% for j in i %}
+
+                                                {% if forloop.counter|divisibleby:2 %}
+
+                                                <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
+
+
+                                                {% else %}
+                                                <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
+                                                {% endif %}
+
+                                                {% endfor %}
+
+                                                {% else %}
+
+                                                {% for j in i %}
+
+                                                {% if forloop.counter|divisibleby:2 %}
+
+                                                <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
+                                                {% else %}
+                                                <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
+                                                {% endif %}
+
+                                                {% endfor %}
+                                                {% endif %}
+
+                                            </tr>
+                                            {% endfor %}
+                                        </table>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="outer-card">
+                    <div class="card">
+                        <!-- <p>Parent</p> -->
+                        <h3 id="time">Button</h3>
+                    </div>
+                    <div class="card">
+                        <p>Queens</p>
+                        <h3 id="wallet">{{ numberQuenns  }}</h3>
+                    </div>
+                    <div class="card">
+                        <p>Population</p>
+                        <h3 id="currbet">{{ PopulationSize  }}</h3>
+                    </div>
+                    <div class="card">
+                        <p>Generation</p>
+                        <h3 id="currmulti">{{ Generation  }}</h3>
+                    </div>
+
+                    <div class="card">
+                        <!-- <p>Reload </p> -->
+                        <h3 id="currentque">Refresh</h3>
+                    </div>
+                </div>
+                <!-- <div id="controlsbet">
+                    <div class="controls" align="center">
+                        <button class="div2" id="skipBet">Skip </button>
+                        <button class="div5" id="solveBet">Solve</button>
+                        <button class="div4 submittest">Submit Test</button>
+                    </div>
+                </div> -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+</body>
+
+</html>
