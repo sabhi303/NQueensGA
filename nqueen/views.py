@@ -45,10 +45,10 @@ def solution(request):
     print("generationCounter" , generationCounter)
     if(not gotoParent):
         n = int(request.GET.get('n'))
-        p = int(request.GET.get('p'))
-        print(n,p)
+        p = request.GET.get('p')
+        print(n,p.split(','))
         gotoParent = False
-        retVal = main(n,p)
+        retVal = main(n,p.split(','))
 
     generationTrack = retVal['generationTrack']
     numberQueens = retVal['numberQueen']
