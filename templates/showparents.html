@@ -274,13 +274,13 @@
         }
 
         .chessboard td {
-            {% if arr|length > 8 %}
+            {% if arr1|length > 8 %}
             height: 6vh;
             width: 6vh;
-            {% elif  arr|length > 7 %}
-            height: 8vh;
-            width: 8vh;
-            {% elif  arr|length > 4 %}
+            {% elif  arr1|length > 7 %}
+            height: 7vh;
+            width: 7vh;
+            {% elif  arr1|length > 4 %}
             height: 10vh;
             width: 10vh;
             {% else %}
@@ -327,7 +327,7 @@
                                        
                                         <div style="width: 40%; float:left; height:auto;  margin:10px">
                                             <table class="chessboard">
-                                                {% for i in arr %}
+                                                {% for i in arr1 %}
                                                 <tr>
                                                     {% if forloop.counter|divisibleby:2 %}
     
@@ -364,7 +364,7 @@
                                             </div>
                                             <div style="width: 40%; float:right; height:auto;  margin:10px">
                                                 <table class="chessboard">
-                                                    {% for i in arr %}
+                                                    {% for i in arr2 %}
                                                     <tr>
                                                         {% if forloop.counter|divisibleby:2 %}
         
@@ -427,7 +427,7 @@
                     </div>
                     <button style="border: none;background: transparent; cursor:pointer; padding: 0%;" onclick="window.location.reload()">
                     <div class="card">
-                        <p>Generate<br> Another<br> Answer </p>
+                        <p>Show<br> Child<br> Generation </p>
                         <!-- <h3 id="currentque">Refresh</h3> -->
                     </div>
                     </button>

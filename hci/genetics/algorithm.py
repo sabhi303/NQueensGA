@@ -4,6 +4,8 @@ import random
 
 import numpy
 
+generationTrack = []
+
 
 def population(populationSz):
     """
@@ -77,6 +79,7 @@ def crossover(p1: list, p2: list) -> tuple:
         child2[i] = p2[i]
     child1 = fillEmpty(child1, p2)
     child2 = fillEmpty(child2, p1)
+
     return child1, child2
 
 
@@ -176,8 +179,12 @@ def nQueen(bordSize, totalPop, maxGeneration, totalItr=0, mutationFactor=0.5):
             topFitPopulation.append(populationFitness[j])
     topFitPopulation = list(zip(topFitPopulation[::2], topFitPopulation[1::2]))
     finalPopulation = []
+    global generationTrack
     for topPair in topFitPopulation:
         child1, child2 = crossover(topPair[0][1], topPair[1][1])
+
+        generationTrack.append([child1,child2])
+
         child1 = mutation(child1, mutationFactor)
         child2 = mutation(child2, mutationFactor)
         finalPopulation.append(child1)
@@ -210,13 +217,18 @@ def main(n, populationSize):
 
     for ielem in range(n):
         solved_2d_array[ielem][solvedQueens[ielem] - 1] = 1
+    
+    global generationTrack
+    
     context = {
         'solvedQueens' : solvedQueens,
         'solved_2d_array' : solved_2d_array,
         'generation' : generation,
+        'generationTrack' : generationTrack
     }
     print(solved_2d_array)
-    # print(context)
+    # print("Generation Track\n",generationTrack)
+    print(context)
     return context
 
 # main(8,4)
