@@ -414,8 +414,13 @@
 
     <script type="text/javascript" src="{% static 'jquery\jquery.min.js' %}"></script>
     <script>
+        
+        var currentGeneration = {{ Generation  }} ;
         function showParents(){
-            $('#showParentsForm').submit();
+            if(currentGeneration > 1)
+                $('#showParentsForm').submit();
+            else
+                alert("This is the 1st Generation!");
             return;
         }
     </script>
