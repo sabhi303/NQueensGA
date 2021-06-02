@@ -362,6 +362,8 @@
                                                 {% endfor %}
                                             </table>
                                             </div>
+
+                                       
                                             <div style="width: 40%; float:right; height:auto;  margin:10px">
                                                 <table class="chessboard">
                                                     {% for i in arr2 %}
@@ -450,8 +452,13 @@
 
     <script type="text/javascript" src="{% static 'jquery\jquery.min.js' %}"></script>
     <script>
+
+        var currentGeneration = {{ currentGeneration  }} ;
         function showParents(){
-            $('#showParentsForm').submit();
+            if(currentGeneration > 1)
+                $('#showParentsForm').submit();
+            else
+                alert("This is the 1st Generation!");
             return;
         }
         function showChild(){
