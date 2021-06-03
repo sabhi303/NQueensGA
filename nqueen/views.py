@@ -23,6 +23,11 @@ def index(request):
 
 def solution(request):
     
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of c51b646 (sys is ready)
     global generationTrack, numberQueens, populationSize, totalGenerations
     global retVal, gotoParent
     print("generationCounter" , generationCounter)
@@ -51,13 +56,22 @@ def solution(request):
 
 
 def showParent(request):
+<<<<<<< HEAD
     global generationCounter, totalGenerations
+=======
+    global generationTrack
+    global generationCounter, numberQueens, populationSize, totalGenerations
+
+    generationCounter = generationCounter + 1
+    currentGeneration = totalGenerations - generationCounter
+>>>>>>> parent of c51b646 (sys is ready)
 
     generationCounter = generationCounter + 1
     currentGeneration = totalGenerations - generationCounter
 
     context = common(currentGeneration)
 
+<<<<<<< HEAD
     return render(request, "showParents.html", context)
 
 
@@ -78,6 +92,18 @@ def showChild(request):
         return solution(request)
     
     context = common(currentGeneration)
+=======
+    solvedQueens = generationTrack[currentGeneration-1][0]
+    # print(solvedQueens)
+    for ielem in range(numberQueens):
+        arr1[ielem][solvedQueens[ielem] - 1] = 1
+
+    arr2 = numpy.zeros((numberQueens, numberQueens))
+    solvedQueens = generationTrack[currentGeneration-1][1]
+    for ielem in range(numberQueens):
+        arr2[ielem][solvedQueens[ielem] - 1] = 1
+
+>>>>>>> parent of c51b646 (sys is ready)
 
 
     # print(context)
@@ -88,7 +114,24 @@ def showChild(request):
 def common(currentGeneration):
 
     global generationTrack,gotoParent
+<<<<<<< HEAD
     global  numberQueens, populationSize
+=======
+    global generationCounter, numberQueens, populationSize, totalGenerations
+
+    
+
+    generationCounter = generationCounter - 1
+    currentGeneration = totalGenerations - generationCounter
+    
+    print("currentGeneration : ",currentGeneration)
+    print("generationCounter" , generationCounter)
+    if(generationCounter <= 1):
+        generationCounter = 0   #he 0 ki 1 bghava lagel
+        gotoParent = True
+        return solution(request)
+
+>>>>>>> parent of c51b646 (sys is ready)
 
     arr1 = numpy.zeros((numberQueens, numberQueens))
     solvedQueens = generationTrack[currentGeneration-1][0]
@@ -100,6 +143,12 @@ def common(currentGeneration):
     for ielem in range(numberQueens):
         arr2[ielem][solvedQueens[ielem] - 1] = 1
 
+<<<<<<< HEAD
+=======
+    print(generationCounter, numberQueens,
+            populationSize, totalGenerations)
+    print(generationTrack)
+>>>>>>> parent of c51b646 (sys is ready)
     context = {
         'arr1': arr1,
         'arr2': arr2,

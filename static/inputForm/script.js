@@ -221,6 +221,10 @@ $( document ).ready(function() {
             alert("Please enter Intial Population Size >2 !");
             flag=1;
         }
+        if (n > 10) {
+            alert("Please enter N <10!");
+            flag=1;
+        }
       }
       else{
         var count=0;
@@ -237,6 +241,7 @@ $( document ).ready(function() {
       }
   
       if(flag==0){
+        alert(ans);
         $('#formn').val($('#nofnqueen').val());
         if(s==0)
           $('#formp').val($('#pofnqueen').val().toString());
