@@ -9,6 +9,29 @@
         body {
             overflow-y: hidden;
         }
+        .chessboard table {
+            border: 8px solid rgba(15, 1, 1, 0.596);
+            margin: auto;
+            font-size: 200%;
+        }
+
+        .chessboard td {
+           
+            
+            font-size: 250%;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .odd {
+            background-color: #8b6d43;
+            color: #fff;
+        }
+
+        .even {
+            background-color: #441a03;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -19,7 +42,8 @@
         <div class="col-12">
             <div id="svg_wrap"></div>
 
-            <h1>Online Application</h1>
+            <!--<h1>Online Application</h1>-->
+            <div class='button1' id="chess"></div>
             <section>
                 <h1>Number of Queens</h1>
                 <input type="number" placeholder="N"
@@ -31,16 +55,17 @@
                 <input type="text" placeholder="Family status" /> -->
             </section>
 
-            <section>
-                <!-- <p>Address</p> -->
-                <h1>Population Size</h1>
+            <section id='population'>
+               
+                <h1>Population Size of First Generation</h1>
                 <input type="number" placeholder="P"
                     style="height: 40vh; font-size: 30vh; text-align: center;overflow-y: hidden;" id="pofnqueen">
-                <!-- <input type="text" placeholder="Street, nbr" />
-                <input type="text" placeholder="City" />
-                <input type="text" placeholder="Postcode" />
-                <input type="text" placeholder="Country" /> -->
+
+               
             </section>
+            <table class="chessboard" id="chessboard" style="text-align: center; justify-content: center !important; margin-right: auto !important; margin-left: auto !important;">
+                                            
+            </table>
             <!-- 
             <section>
                 <p>Contact information</p>
@@ -77,7 +102,7 @@
                 <form method="GET" action="solve" id="npform">
 
                     <input type="number" name="n" id="formn">
-                    <input type="number" name="p" id="formp">
+                    <input type="string" name="p" id="formp">
                 </form>
             </div>
 
@@ -89,25 +114,7 @@
     <script src="{% static 'jquery\jquery-ui.min.js' %}"></script>
     <script src="{% static 'inputForm\script.js' %}"></script>
     <script>
-        submitForm = function () {
-
-            //to be commented
-            let n = $('#nofnqueen').val();
-            let p = $('#pofnqueen').val();
-            //
-            if (p < 2) {
-                alert("Please enter Intial Population Size >2 !");
-                return;
-            }
-            if (n > 10) {
-                alert("Please enter N <10!");
-                return;
-            }
-
-            $('#formn').val($('#nofnqueen').val());
-            $('#formp').val($('#pofnqueen').val());
-            $('#npform').submit();
-        }
+        
     </script>
 </body>
 
