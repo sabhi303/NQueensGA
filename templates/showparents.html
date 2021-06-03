@@ -302,14 +302,10 @@
             background-color: #441a03;
             color: #fff;
         }
-        .wrong {
-            background-color: red;
-            color: #fff;
-        }
     </style>
 </head>
 
-<body onload="loaded('{{ alert }}')">
+<body>
     <!-- <div class="logo">
         <img src="./assets/logo.gif" alt="">
     </div> -->
@@ -335,29 +331,31 @@
                                                 <tr>
                                                     {% if forloop.counter|divisibleby:2 %}
     
-                                                        {% for j in i %}
-                                                            {% if j == 2 %}
-                                                                <td class="chessboard wrong">♛</td>
-                                                            {% else %}
-                                                                {% if forloop.counter|divisibleby:2 %}
-                                                                    <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
-                                                                {% else %}
-                                                                    <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
-                                                                {% endif %}
-                                                            {% endif %}
-                                                        {% endfor %}
+                                                    {% for j in i %}
+    
+                                                    {% if forloop.counter|divisibleby:2 %}
+    
+                                                    <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
+    
+    
                                                     {% else %}
-                                                        {% for j in i %}
-                                                            {% if j == 2 %}
-                                                                <td class="chessboard wrong">♛</td>
-                                                            {% else %}
-                                                                {% if forloop.counter|divisibleby:2 %}
-                                                                    <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
-                                                                {% else %}
-                                                                    <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
-                                                                {% endif %}
-                                                            {% endif %}
-                                                        {% endfor %}
+                                                    <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
+                                                    {% endif %}
+    
+                                                    {% endfor %}
+    
+                                                    {% else %}
+    
+                                                    {% for j in i %}
+    
+                                                    {% if forloop.counter|divisibleby:2 %}
+    
+                                                    <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
+                                                    {% else %}
+                                                    <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
+                                                    {% endif %}
+    
+                                                    {% endfor %}
                                                     {% endif %}
     
                                                 </tr>
@@ -371,31 +369,34 @@
                                                     {% for i in arr2 %}
                                                     <tr>
                                                         {% if forloop.counter|divisibleby:2 %}
-    
+        
                                                         {% for j in i %}
-                                                            {% if j == 2 %}
-                                                                <td class="chessboard wrong">♛</td>
-                                                            {% else %}
-                                                                {% if forloop.counter|divisibleby:2 %}
-                                                                    <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
-                                                                {% else %}
-                                                                    <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
-                                                                {% endif %}
-                                                            {% endif %}
+        
+                                                        {% if forloop.counter|divisibleby:2 %}
+        
+                                                        <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
+        
+        
+                                                        {% else %}
+                                                        <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
+                                                        {% endif %}
+        
                                                         {% endfor %}
-                                                    {% else %}
+        
+                                                        {% else %}
+        
                                                         {% for j in i %}
-                                                            {% if j == 2 %}
-                                                                <td class="chessboard wrong">♛</td>
-                                                            {% else %}
-                                                                {% if forloop.counter|divisibleby:2 %}
-                                                                    <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
-                                                                {% else %}
-                                                                    <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
-                                                                {% endif %}
-                                                            {% endif %}
+        
+                                                        {% if forloop.counter|divisibleby:2 %}
+        
+                                                        <td class="chessboard even">{% if j == 1 %}♛{% endif %}</td>
+                                                        {% else %}
+                                                        <td class="chessboard odd">{% if j == 1 %}♛{% endif %}</td>
+                                                        {% endif %}
+        
                                                         {% endfor %}
-                                                    {% endif %}
+                                                        {% endif %}
+        
                                                     </tr>
                                                     {% endfor %}
                                                 </table>
@@ -446,8 +447,12 @@
 
     </div>
 
-    <form action="showParents" style="display: none;" id="showParentsForm"><input type='hidden' name='gen' value={{ currentGeneration }}></form>
-    <form action="showChild" style="display: none;" id="showChildForm"><input type='hidden' name='gen' value={{ currentGeneration }}></form>
+    <form action="showParents" style="display: none;" id="showParentsForm"></form>
+    <form action="showChild" style="display: none;" id="showChildForm">
+        <input type="number" name="n" value="{{ numberQuenns }}">
+        <input type="number" name="p" value="{{ PopulationSize }}">
+    </form>
+    
 
     <script type="text/javascript" src="{% static 'jquery\jquery.min.js' %}"></script>
     <script>
@@ -463,11 +468,6 @@
         function showChild(){
             $('#showChildForm').submit();
             return;
-        }
-        function loaded(al){
-            if(al=='t'){
-                alert('This is 1st Generation');
-            }
         }
     </script>
 
