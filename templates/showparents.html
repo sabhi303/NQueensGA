@@ -448,7 +448,11 @@
     </div>
 
     <form action="showParents" style="display: none;" id="showParentsForm"></form>
-    <form action="showChild" style="display: none;" id="showChildForm"></form>
+    <form action="showChild" style="display: none;" id="showChildForm">
+        <input type="number" name="n" value="{{ numberQuenns }}">
+        <input type="number" name="p" value="{{ PopulationSize }}">
+    </form>
+    
 
     <script type="text/javascript" src="{% static 'jquery\jquery.min.js' %}"></script>
     <script>
