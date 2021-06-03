@@ -1,7 +1,7 @@
 import math
 import random
 
-
+import sys
 import numpy
 
 generationTrack = []
@@ -193,7 +193,7 @@ def nQueen(bordSize, totalPop, maxGeneration, totalItr=0, mutationFactor=0.5):
     """
     if totalItr > maxGeneration:
         # //ithe error takayachay
-        return "No solution found after generation %d"%totalItr
+        return "No solution found",totalItr
     totalItr += 1
     fitnessValues = []
     
@@ -214,7 +214,7 @@ def nQueen(bordSize, totalPop, maxGeneration, totalItr=0, mutationFactor=0.5):
     populationFitness.sort(key=lambda x: x[0])
     newRange = math.ceil(math.sqrt(len(totalPop)))
     if newRange < 2:
-        return "No solution found",1000
+        return "No solution found",totalItr
 
     topFitPopulation = []
     for j in range(newRange):
@@ -236,7 +236,7 @@ def nQueen(bordSize, totalPop, maxGeneration, totalItr=0, mutationFactor=0.5):
 
 
 def main(n, populationSize):
-    
+    sys.setrecursionlimit(3000)
     totalPopulation = []
     if(len(populationSize)==1):
         populationSize=int(populationSize[0])
@@ -249,21 +249,17 @@ def main(n, populationSize):
     # print("totalPopulation : ",totalPopulation)
 
     itrs = 0    #initial iteration number
-    maxIters = 1000 #introduce limit
+    maxIters = 2949 #introduce limit
     solvedQueens,generation = nQueen(n, totalPopulation, maxIters, itrs)
     
 
     # //jr soln aal tr
+    solved_2d_array = numpy.zeros((n, n))
     if isinstance(solvedQueens, str):
         print(solvedQueens)
-        exit(0)
-
-    # print(solvedQueens)
-
-    solved_2d_array = numpy.zeros((n, n))
-
-    for ielem in range(n):
-        solved_2d_array[ielem][solvedQueens[ielem] - 1] = 1
+    else:
+        for ielem in range(n):
+            solved_2d_array[ielem][solvedQueens[ielem] - 1] = 1
         
     
     global generationTrack
