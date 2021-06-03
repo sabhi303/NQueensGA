@@ -329,9 +329,12 @@
 
                                         <!-- ithe mala maza table takayachay basically -->
                                         <table class="chessboard" style="text-align: center; justify-content: center !important; margin-right: auto !important; margin-left: auto !important;">
+                    
                                             {% for i in arr %}
                                             <tr>
-                                                {% if forloop.counter|divisibleby:2 %}
+                                                {% if solvedQueens == "No solution found" and mid == forloop.counter %}
+                                                        <td colspan="{{ numberQuenns }}"> No Solution Found</td>
+                                                {% elif forloop.counter|divisibleby:2 %}
 
                                                 {% for j in i %}
 
@@ -390,9 +393,13 @@
                         <p>Generation</p>
                         <h3 id="currmulti">{{ Generation  }}</h3>
                     </div>
-                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;" onclick="window.location.reload()">
+                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;" onclick="newsoln()">
                     <div class="card">
                         <p>Generate<br> Another<br> Answer </p>
+                        <form action="solve" style="display: none;" id="solve">
+                            <input type="hidden" name='n' id='n' value={{ numberQuenns }}>
+                            <input type="hidden" name='p' id='p' value={{p}}>
+                        </form>
                         <!-- <h3 id="currentque">Refresh</h3> -->
                     </div>
                     </button>
@@ -410,7 +417,7 @@
 
     </div>
 
-    <form action="showParents" style="display: none;" id="showParentsForm"></form>
+    <form action="showParents" style="display: none;" id="showParentsForm"><input type='hidden' name='gen' value={{ Generation }}></form>
 
     <script type="text/javascript" src="{% static 'jquery\jquery.min.js' %}"></script>
     <script>
@@ -423,6 +430,10 @@
                 alert("This is the 1st Generation!");
             return;
         }
+        function newsoln(){
+            $('#solve').submit();
+        }
+        
     </script>
 </body>
 
