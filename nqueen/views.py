@@ -27,6 +27,9 @@ def solution(request):
 =======
 
 
+<<<<<<< HEAD
+>>>>>>> parent of c51b646 (sys is ready)
+=======
 >>>>>>> parent of c51b646 (sys is ready)
     global generationTrack, numberQueens, populationSize, totalGenerations
     global retVal, gotoParent
@@ -61,6 +64,12 @@ def showParent(request):
 =======
     global generationTrack
     global generationCounter, numberQueens, populationSize, totalGenerations
+<<<<<<< HEAD
+=======
+
+    generationCounter = generationCounter + 1
+    currentGeneration = totalGenerations - generationCounter
+>>>>>>> parent of c51b646 (sys is ready)
 
     generationCounter = generationCounter + 1
     currentGeneration = totalGenerations - generationCounter
@@ -103,6 +112,9 @@ def showChild(request):
     for ielem in range(numberQueens):
         arr2[ielem][solvedQueens[ielem] - 1] = 1
 
+<<<<<<< HEAD
+>>>>>>> parent of c51b646 (sys is ready)
+=======
 >>>>>>> parent of c51b646 (sys is ready)
 
 
@@ -131,6 +143,9 @@ def common(currentGeneration):
         gotoParent = True
         return solution(request)
 
+<<<<<<< HEAD
+>>>>>>> parent of c51b646 (sys is ready)
+=======
 >>>>>>> parent of c51b646 (sys is ready)
 
     arr1 = numpy.zeros((numberQueens, numberQueens))
@@ -144,7 +159,10 @@ def common(currentGeneration):
         arr2[ielem][solvedQueens[ielem] - 1] = 1
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of c51b646 (sys is ready)
     print(generationCounter, numberQueens,
             populationSize, totalGenerations)
     print(generationTrack)
