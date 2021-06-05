@@ -25,13 +25,22 @@ def solution(request):
     
     global generationTrack, numberQueens, populationSize, totalGenerations
     global retVal, gotoParent
-    print("generationCounter" , generationCounter)
+
     if(not gotoParent):
+        generationTrack = []
+        totalGenerations = 0
+        generationCounter = 0
+        numberQueens = 0
+        populationSize = 0
+        gotoParent = False
         n = int(request.GET.get('n'))
         p = request.GET.get('p')
         print(n,p.split(','))
         gotoParent = False
         retVal = main(n,p.split(','))
+
+    print("generationCounter" , generationCounter)
+   
 
     generationTrack = retVal['generationTrack']
     numberQueens = retVal['numberQueen']
