@@ -306,6 +306,31 @@
             background-color: #441a03;
             color: #fff;
         }
+        .logoutbt{
+            position: fixed;
+            margin-left: 92%;
+            margin-top: 50px;
+            border-style: solid;
+            background-color: rgba(255, 60, 0, 0.507);
+            color: cornsilk;
+            height: 5vh;
+            width: 10vh;
+            font-size: 2vh;
+            border-radius: 6px;
+        }
+        .backbt{
+            position: fixed;
+            margin-left: 86%;
+            margin-top: 50px;
+            border-style: solid;
+            background-color: rgba(255, 60, 0, 0.507);
+            color: cornsilk;
+    
+            height: 5vh;
+            width: 10vh;
+            font-size: 2vh;
+            border-radius: 6px;
+        }
     </style>
 </head>
 
@@ -313,6 +338,12 @@
     <!-- <div class="logo">
         <img src="./assets/logo.gif" alt="">
     </div> -->
+    <div>
+        <a href="/nqueens"><button class="backbt">Back</button></a>
+    </div>
+    <div>
+        <a href="/logout"><button class="logoutbt">Logout</button></a>
+    </div>
     <div class="main-div">
         <div class="outer-border">
             <h2>Solution to N-Queen</h2>
@@ -331,7 +362,9 @@
                                         <table class="chessboard" style="text-align: center; justify-content: center !important; margin-right: auto !important; margin-left: auto !important;">
                                             {% for i in arr %}
                                             <tr>
-                                                {% if forloop.counter|divisibleby:2 %}
+                                                 {% if solvedQueens == "No solution found" and mid == forloop.counter %}
+                                                            <td colspan="{{ numberQuenns }}">No solution found</td>
+                                                {% elif forloop.counter|divisibleby:2 %}
 
                                                 {% for j in i %}
 
@@ -390,9 +423,13 @@
                         <p>Generation</p>
                         <h3 id="currmulti">{{ Generation  }}</h3>
                     </div>
-                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;" onclick="window.location.reload()">
+                    <button style="border: none;background: transparent; cursor:pointer; padding: 0%;" onclick="newsoln()">
                     <div class="card">
                         <p>Generate<br> Another<br> Answer </p>
+                         <form action="solve" style="display: none;" id="solve">
+                         <input type="hidden" name='n' value={{ numberQuenns }}>
+                        <input type="hidden" name='p' value={{ p }}>
+                         </form>
                         <!-- <h3 id="currentque">Refresh</h3> -->
                     </div>
                     </button>
@@ -410,7 +447,7 @@
 
     </div>
 
-    <form action="showParents" style="display: none;" id="showParentsForm"></form>
+    <form action="showParents" style="display: none;" id="showParentsForm"><input type="hidden" name='gen' value={{ Generation }}></form>
 
     <script type="text/javascript" src="{% static 'jquery\jquery.min.js' %}"></script>
     <script>
@@ -422,6 +459,9 @@
             else
                 alert("This is the 1st Generation!");
             return;
+        }
+        function newsoln(){
+            $('#solve').submit();
         }
     </script>
 </body>

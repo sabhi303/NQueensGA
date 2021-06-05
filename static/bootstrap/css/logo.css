@@ -1,0 +1,47 @@
+  .blink {
+          font-family: 'Casino';
+      font-stretch: normal;
+      width: 100%;
+      text-align: center;
+      font-size: 70px;
+      line-height: 9vw;
+      animation: blinker 2s infinite;
+        padding: 0;
+        margin: 0;
+        text-shadow: .2vw .2vw .1vw yellow;
+        text-shadow: 0 0 0.1vh black, 0 0 .3vw black, 0 0 .10vw black, 0 0 0.5vw black, 0 0 .4vw black, .3vw .3vw .2vw plum;
+      }
+      @keyframes blinker { 
+      0%{
+        color: orange;
+      } 
+      10%{
+        color: red;
+      }
+      20%{
+        color: plum;
+      }
+      30%{
+        color: red;
+      }
+      40%{
+        color: orange;
+      }
+      50%{
+        color: plum;
+      }
+      60%{
+        color:  orange; 
+      }
+      70%{
+      color:red;
+      }
+      80%{
+          color:plum;
+      }
+      90%{
+          color:red;
+      }
+      100%{
+          color:orange;
+      }

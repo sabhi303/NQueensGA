@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <title>Registration-N Queens</title>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/logo.css' %}">
+
+     <!-- <link rel="stylesheet" href="css/bootstrap.min.css">  -->
+     <style>
+      html, body {
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 15px;
+
+      }
+      body{
+        height: 100vh;
+        background-color: black;
+        background-image:url("../static/img/register2.jpg");
+        background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      background-position: center;
+      }
+      form {
+        position: absolute;
+        top: 50%;
+        /*right: 0% ;*/
+        left: 75%;
+        transform: translate(-50%, -50%);
+        width: 30%;
+        /* color:cyan; */
+        color: brown !important;
+      border: 0px solid #000;
+      border-radius: 14px;
+      background: rgba(44, 65, 68, 0.774);
+      background: -webkit-linear-gradient(bottom, rgba(44, 65, 68, 0.25), rgba(1, 221, 255, 0.945));
+      background: -moz-linear-gradient(bottom, rgba(44, 65, 68, 0.25), rgba(1, 221, 255, 0.938));
+      background: linear-gradient(to top, rgba(44, 65, 68, 0.25), rgba(1, 221, 255, 0.801));
+        }
+      input[type=text], input[type=password],input[type=email] {
+        width: 100%;
+      padding: 0.8rem 1rem;
+      margin: 0.5rem 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 3px;
+      border: none;
+      font-size: 1rem;
+      }
+      .icon {
+      font-size: 110px;
+      display: flex;
+      justify-content: center;
+      color: #4286f4;
+      }
+      h1 {
+      text-align:center;
+      font-size:18;
+      margin-top: 10px;
+      }
+      .formcontainer {
+      text-align: center;
+      margin: 24px 50px 12px;
+      }
+      .container {
+      padding: 16px 0;
+      text-align:left;
+      }
+      span.psw {
+      float: right;
+      padding-top: 0;
+      padding-right: 15px;
+      }
+      /* Change styles for span on extra small screens */
+      @media screen and (max-width: 300px) {
+      span.psw {
+      display: block;
+      float: none;
+      }
+      button:hover{
+        box-shadow: 0 0 250px rgb(137, 184, 184) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <p align="center" class="blink" >N Queen Puzzle</p>
+    <form method="POST" action="signup">
+      {% csrf_token %}
+      <h1 style="font-family: 'Casino';color: brown !important;">S I G N &nbsp;&nbsp;U P</h1>
+      <div class="formcontainer">
+      <div class="container">
+        <label for="name"><strong>Name</strong></label>
+        <input type="text" placeholder="Enter name" name="name" required>
+        <label for="email"><strong>E-Mail</strong></label><br>
+        <input type="email" placeholder="Enter E-mail" name="email" required><br>
+
+        <label for="password"><strong>Password</strong></label><br>
+        <input type="password" placeholder="Enter Password" name="password" required><br>
+        
+        <br>
+        <br>
+        
+      </div>
+      <button type="submit" class="btn btn-dark btn-lg" style="box-shadow: 0 0 25px rgba(0,255,255,1) !important;"><strong>SIGN UP</strong></button>
+      &emsp;&emsp;&emsp;
+      <button class="btn btn-dark btn-lg" style="box-shadow: 0 0 25px rgba(0,255,255,1) !important;"><strong><a href="/">SIGN In</a></strong></button>
+     </div>
+    </form>
+    <script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

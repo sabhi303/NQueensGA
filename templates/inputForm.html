@@ -32,14 +32,30 @@
             background-color: #441a03;
             color: #fff;
         }
+        .logoutbt{
+           
+       
+            /* margin-top: 50px; */
+            border-style: solid;
+            background-color: rgba(255, 60, 0, 0.507);
+            color: cornsilk;
+            height: 5vh;
+            width: 10vh;
+            font-size: 2vh;
+            border-radius: 6px;
+        }
+
     </style>
 </head>
 
 <body>
 
 
-    <div class="wrappper">
+    <div class="wrappper" >
         <div class="col-12">
+            
+
+
             <div id="svg_wrap"></div>
 
             <!--<h1>Online Application</h1>-->
@@ -95,7 +111,9 @@
             <div class="button" id="prev">&larr; Previous</div>
             <div class="button" id="next">Next &rarr;</div>
             <div class="button" id="submit" onclick="submitForm()">Solve!</div>
-
+            <div class="row">
+                <a href="/logout" style="display: inline;"><button class="logoutbt">Logout</button></a>
+            </div>
 
             <!-- /dummy form  -->
             <div style="display:none">
