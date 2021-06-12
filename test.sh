@@ -1,4 +1,4 @@
 #!/bin/bash
 
 #run test
-python manage.py test
+python3 manage.py test
