@@ -152,7 +152,7 @@ def showParent(request):
 
     # print(context)
 
-    return render(request, "showParents.html", context)
+    return render(request, "showparents.html", context)
 
 
 def showChild(request):
@@ -230,4 +230,4 @@ def showChild(request):
 
     # print(context)
 
-    return render(request, "showParents.html", context)
+    return render(request, "showparents.html", context)
